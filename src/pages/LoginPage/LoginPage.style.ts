@@ -8,6 +8,7 @@ export const StyleLoginPage = styled.div`
   width: 80%;
   max-width: 500px;
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
   padding: 40px;
 
   h1 {

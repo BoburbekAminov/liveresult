@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/UI/Button/Button";
 import { StyleLoginPage } from "./LoginPage.style";
 import { Container } from "../../components/UI/Container/Container.style";
+import { Heading } from "../../components/Typograohy/Heading";
+import { StyledLink } from "../../components/Typograohy/StyledLink";
+import { RegistrationInfo } from "../../components/RegistrationInfo/RegistrationInfo";
 
 interface ILoginForm {
   useremail: string;
@@ -37,7 +40,7 @@ export const LoginPage = () => {
   const navigate = useNavigate();
 
   const onLoginSubmit: SubmitHandler<ILoginForm> = (data) => {
-    navigate("/");
+    navigate("/main");
     console.log(data, "data");
   };
 
@@ -46,6 +49,7 @@ export const LoginPage = () => {
   return (
     <Container>
       <StyleLoginPage>
+        <Heading headingText="Авторизация" />
         <form onSubmit={handleSubmit(onLoginSubmit)}>
           <Controller
             name="useremail"
@@ -80,6 +84,12 @@ export const LoginPage = () => {
             buttonText="Войти"
           />
         </form>
+        {/* <StyledLink to="/" linkText="Забыли пароль?" /> */}
+        <RegistrationInfo
+          question="У вас нет аккаунта?"
+          linkLabel="Зарегистрироваться"
+          linkURL="/register"
+        />
       </StyleLoginPage>
     </Container>
   );

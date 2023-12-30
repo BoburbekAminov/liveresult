@@ -6,16 +6,23 @@ export const GlobalStyle = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
 }
+h1{
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+span{
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 body {
   min-width: 530px;
   margin: 0;
-  font-family: "Inter";
+  font-family: Arial, Helvetica, sans-serif;
   background-color: var(--bgc);
   color: var(--text-color);
 }
 p{
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
     font-size: .8125rem;
     font-weight: 400;
     line-height: 1.5;
@@ -31,6 +38,8 @@ input {
 }
 
 a {
+  font-family: Arial, Helvetica, sans-serif;
+
   text-decoration: none;
   color: inherit;
   
