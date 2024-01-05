@@ -20,25 +20,58 @@ export const StyledMainPage = styled.div`
     }
   }
   .recommendations {
-    display: flex;
-    align-items: center;
-    font-weight: 700;
+    .recommendationTitle {
+      display: flex;
+      align-items: center;
+      background-color: #bdf;
+      max-width: 177px;
+      font-weight: 700;
+      text-align: center;
+      .tabCurrent {
+        /* background-color: #bdf; */
+        color: #3c4a63;
+        padding: 0 8px;
+        cursor: pointer;
+        height: 65px;
 
-    .tabCurrent {
-      background-color: #bdf;
-      color: #3c4a63;
-      padding: 8px;
-      p {
-        font-family: Arial, Helvetica, sans-serif;
+        p {
+          font-family: Arial, Helvetica, sans-serif;
+
+          @media (min-width: 769px) {
+            margin: 23px 0;
+          }
+        }
+
+        @media (max-width: 769px) {
+          height: 50px;
+        }
+      }
+      .tabFootbal {
+        /* background-color: #bdf; */
+        color: #3c4a63;
+        padding: 0 8px;
+        height: 65px;
+
+        cursor: pointer;
+
+        p {
+          font-family: Arial, Helvetica, sans-serif;
+
+          @media (min-width: 769px) {
+            margin: 23px 0;
+          }
+        }
+
+        @media (max-width: 769px) {
+          height: 50px;
+        }
       }
     }
-    .tabFootbal {
-      background-color: #bdf;
-      color: #3c4a63;
-      padding: 8px;
-      p {
-        font-family: Arial, Helvetica, sans-serif;
-      }
+    /* .tab { */
+    .matchs {
+      display: flex;
+      flex-wrap: wrap;
     }
+    /* } */
   }
 `;

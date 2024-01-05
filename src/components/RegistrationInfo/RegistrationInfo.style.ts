@@ -9,7 +9,6 @@ export const StyledRegistrationInfo = styled.div`
   span {
     display: inline-block;
     font-size: 16px;
-    margin-bottom: 40px;
 
     a {
       display: inline;

@@ -28,6 +28,7 @@ p{
     line-height: 1.5;
     color: #212529;
     text-align: left;
+    margin: 0;
 }
 
 button,

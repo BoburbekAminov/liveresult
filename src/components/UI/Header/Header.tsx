@@ -26,7 +26,9 @@ export const Header = () => {
         </div>
         <div className="time"></div>
         <div className="reagister">
-          <a href="/login">Вход</a>
+          <a href="/profile">
+            <img src="./img/user.png" alt="" />
+          </a>
         </div>
       </div>
     </div>

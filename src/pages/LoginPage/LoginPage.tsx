@@ -84,7 +84,7 @@ export const LoginPage = () => {
             buttonText="Войти"
           />
         </form>
-        {/* <StyledLink to="/" linkText="Забыли пароль?" /> */}
+        <StyledLink to="/register" linkText="Забыли пароль?" />
         <RegistrationInfo
           question="У вас нет аккаунта?"
           linkLabel="Зарегистрироваться"
@@ -94,7 +94,3 @@ export const LoginPage = () => {
     </Container>
   );
 };
-
-// export const LoginPage = () => {
-//   return <></>;
-// };

@@ -5,28 +5,31 @@ export const Menu = () => {
   return (
     <StyledMenu>
       <div className="menuName">
-        <a href="">Футбол</a>
+        <p>Футбол</p>
       </div>
       <div className="menuName">
-        <a href="">Хоккей</a>
+        <p>Хоккей</p>
       </div>
       <div className="menuName">
-        <a href="">Теннис</a>
+        <p>Теннис</p>
       </div>
       <div className="menuName">
-        <a href="">Баскетбол</a>
+        <p>Баскетбол</p>
       </div>
       <div className="menuName">
-        <a href="">Формула-1</a>
+        <p>Формула-1</p>
       </div>
       <div className="menuName">
-        <a href="">ММА</a>
+        <p>ММА</p>
       </div>
       <div className="menuName">
-        <a href="">Волейбол</a>
+        <p>Волейбол</p>
       </div>
       <div className="menuName">
-        <a href="">Гандбол</a>
+        <p>Гандбол</p>
+      </div>
+      <div className="menuName">
+        <p>Бейсбол</p>
       </div>
     </StyledMenu>
   );
