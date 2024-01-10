@@ -5,25 +5,40 @@ interface IMatchProps {
   isLiked?: boolean;
   isMarked?: boolean;
   date: string;
-  long: string;
-  home: string | number;
-  away: string | number;
+  homeLogo: string;
+  homeName: string;
+  awayLogo: string;
+  awayName: string;
+  //   long: string;
+  //   name: string;
+  homeGoal: string | number;
+  awayGoal: string | number;
 }
 
 export const Match = ({
   isLiked,
   isMarked,
   date,
-  long,
-  home,
-  away,
+  homeLogo,
+  homeName,
+  awayLogo,
+  awayName,
+  //   long,
+  homeGoal,
+  awayGoal,
 }: IMatchProps) => {
   return (
     <StyledMatch $isLiked={isLiked} $isMarked={isMarked}>
-      <p>{date}</p>
-      <p>{long}</p>
-      <p>{home}</p>
-      <p>{away}</p>
+      <div className="h2h">
+        <span>{date}</span>
+        <img src={homeLogo} alt="" />
+        <span>{homeName}</span>
+        <p>
+          {homeGoal} : {awayGoal}
+        </p>
+        <img src={awayLogo} alt="" />
+        <span>{awayName}</span>
+      </div>
     </StyledMatch>
   );
 };

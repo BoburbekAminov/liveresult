@@ -3,6 +3,7 @@ import { Controller, useForm, SubmitHandler } from "react-hook-form";
 import { Input } from "../../components/UI/Input/Input";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/UI/Button/Button";
 import { StyleLoginPage } from "./LoginPage.style";
@@ -10,6 +11,7 @@ import { Container } from "../../components/UI/Container/Container.style";
 import { Heading } from "../../components/Typograohy/Heading";
 import { StyledLink } from "../../components/Typograohy/StyledLink";
 import { RegistrationInfo } from "../../components/RegistrationInfo/RegistrationInfo";
+import { setUser } from "../../store/slice/authSlice";
 
 interface ILoginForm {
   useremail: string;
@@ -25,6 +27,8 @@ const loginFormSchema = yup.object({
 });
 
 export const LoginPage = () => {
+  const dispatch = useDispatch();
+
   const {
     control,
     handleSubmit,
@@ -40,7 +44,10 @@ export const LoginPage = () => {
   const navigate = useNavigate();
 
   const onLoginSubmit: SubmitHandler<ILoginForm> = (data) => {
-    navigate("/main");
+    dispatch(
+      setUser({ useremail: data.useremail, userpassword: data.userpassword })
+    );
+    navigate("/profile");
     console.log(data, "data");
   };
 

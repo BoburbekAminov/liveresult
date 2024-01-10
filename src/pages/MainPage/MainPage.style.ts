@@ -67,11 +67,15 @@ export const StyledMainPage = styled.div`
         }
       }
     }
-    /* .tab { */
     .matchs {
       display: flex;
       flex-wrap: wrap;
+      padding-top: 20px;
     }
-    /* } */
+    .matchTwo {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
   }
 `;

@@ -6,9 +6,31 @@ interface IStyledMatchProps {
 }
 
 export const StyledMatch = styled.div<IStyledMatchProps>`
-  display: flex;
-  max-width: 450px;
-  width: 100%;
+  flex-basis: 450px;
+  flex-grow: 1;
+  padding: 10px 20px 20px 0;
+  .h2h {
+    display: flex;
+    align-items: center;
+    max-width: 555px;
+    height: 30px;
+    width: 100%;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #dbdbdb;
+
+    p {
+      font-size: 18px;
+      padding: 0 10px;
+      margin: 0;
+    }
+    img {
+      max-width: 20px;
+      width: 100%;
+    }
+    span {
+      font-size: 16px;
+    }
+  }
   ${(props) =>
     props.$isLiked &&
     css`

@@ -72,16 +72,35 @@ export const MainPage = () => {
                     data?.response.map((match) => (
                       <Match
                         date={match?.fixture?.date}
-                        long={match?.fixture?.status.long}
-                        home={match?.goals?.home}
-                        away={match?.goals?.away}
+                        homeLogo={match?.teams?.home.logo}
+                        homeName={match?.teams?.home.name}
+                        awayLogo={match?.teams?.away.logo}
+                        awayName={match?.teams?.away.name}
+                        // long={match?.fixture?.status.long}
+                        homeGoal={match?.goals?.home}
+                        awayGoal={match?.goals?.away}
                       />
                     ))}
                 </div>
               ) : (
-                <div className="">tab2</div>
+                <div className="matchTwo">
+                  {" "}
+                  {!!data?.response.length &&
+                    data?.response.map((match) => (
+                      <Match
+                        date={match?.fixture?.date}
+                        homeLogo={match?.teams?.home.logo}
+                        homeName={match?.teams?.home.name}
+                        awayLogo={match?.teams?.away.logo}
+                        awayName={match?.teams?.away.name}
+                        // long={match?.fixture?.status.long}
+                        homeGoal={match?.goals?.home}
+                        awayGoal={match?.goals?.away}
+                      />
+                    ))}
+                </div>
               )}
-              {/* </div> */}
+              {/* </div>  */}
             </div>
           </div>
         </StyledMainPage>

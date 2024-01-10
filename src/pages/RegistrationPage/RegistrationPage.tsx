@@ -6,9 +6,11 @@ import { Controller, useForm, SubmitHandler } from "react-hook-form";
 import { Input } from "../../components/UI/Input/Input";
 import { Container } from "../../components/UI/Container/Container.style";
 import * as yup from "yup";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RegistrationInfo } from "../../components/RegistrationInfo/RegistrationInfo";
+import { changeUser } from "../../store/slice/userSlice";
 
 const regexUZB = /^(?:\+998)?(?:\d{2})?(?:\d{7})$/;
 
@@ -35,6 +37,8 @@ interface IRegistrationForm {
 }
 
 export const RegistrationPage = () => {
+  const dispatch = useDispatch();
+
   const {
     control,
     handleSubmit,
@@ -54,7 +58,16 @@ export const RegistrationPage = () => {
   const navigate = useNavigate();
 
   const onRegistrationSubmit: SubmitHandler<IRegistrationForm> = (data) => {
-    navigate("/main");
+    dispatch(
+      changeUser({
+        username: data.username,
+        userphone: data.userphone,
+        useremail: data.useremail,
+        userpassword: data.userpassword,
+        usercity: data.usercity,
+      })
+    );
+    navigate("/profile");
     console.log(data, "DATA: ");
   };
 
