@@ -1,11 +1,14 @@
-import React from "react";
-import "./Header.scss";
+import React, { useContext } from "react";
+import { StyledHeader } from "./Header.style";
+import { ThemeContext } from "../../contexts/themeContext";
 
 export const Header = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
-    <div className="header">
+    <StyledHeader>
       <div className="logo">
-        <a href="/">
+        <a href="/main">
           <img
             src="	https://static.liveresult.ru/themes/adaptive/images/logo_h.svg"
             alt=""
@@ -18,19 +21,28 @@ export const Header = () => {
         </span>
       </div>
       <div className="inputAndreagister">
+        <div className="theme">
+          <button
+            onClick={() => {
+              toggleTheme();
+              console.log(theme);
+            }}
+          >
+            theme
+          </button>
+        </div>
         <div className="search">
           <input type="text" placeholder="Поиск" />
-          <button>
+          <button className="searchBtn">
             <img src="./search (1).svg" />
           </button>
         </div>
-        <div className="time"></div>
-        <div className="reagister">
+        <div className="profileIcon">
           <a href="/profile">
             <img src="./img/user.png" alt="" />
           </a>
         </div>
       </div>
-    </div>
+    </StyledHeader>
   );
 };

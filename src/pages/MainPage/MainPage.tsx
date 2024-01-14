@@ -1,46 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container } from "../../components/UI/Container/Container.style";
-import { Header } from "../../components/UI/Header/Header";
-import {
-  // useGetCountriesQuery,
-  useLazyGetCountriesQuery,
-} from "../../store/API/matchApi";
+import { Header } from "../../components/Header/Header";
+import { MatchItem, useLazyGetCountriesQuery } from "../../store/API/matchApi";
+import { FullscreenLoader } from "../../components/UI/FullscreenLoader/FullscreenLoader";
 import { Supheader } from "../../components/Supheader/Supheader";
 import { Menu } from "../../components/Menu/Menu";
 import { StyledMainPage } from "./MainPage.style";
 import { Match } from "../../components/Match/Match";
+import { ThemeContext, themes } from "../../contexts/themeContext";
 
 export const MainPage = () => {
-  // const { data, isLoading, error } = useGetCountriesQuery({
-  //   h2h: "33-34",
-  //   status: "ft",
-  //   last: "10",
-  // });
-  const [fetchTrigger, { data, isLoading, error }] = useLazyGetCountriesQuery(
-    {}
-  );
+  // const [fetchTrigger, { data, isLoading, error }] = useLazyGetCountriesQuery(
+  //   {}
+  // );
   const [index, setIndex] = useState(0);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
-  useEffect(() => {
-    fetchTrigger(null);
-  }, [fetchTrigger, data]);
+  console.log("theme", theme);
+  // useEffect(() => {
+  //   fetchTrigger(null);
+  // }, [fetchTrigger, data]);
 
-  if (data) {
-    console.log(data);
-  }
+  // if (data) {
+  //   console.log(data);
+  // }
 
-  if (error) {
-    console.log(error);
-  }
+  // if (error) {
+  //   console.log(error);
+  // }
 
   return (
     <>
-      {/* {isError && <h1>ERROR</h1>}  */}
-      {isLoading && <h1>Loading...</h1>}
-      <Container>
+      <Container
+        style={{
+          background: theme === themes.dark ? "#333" : "#fff",
+          color: theme === "default" ? "#fff" : "#333",
+        }}
+      >
         <Header />
+        {/* {isLoading && <FullscreenLoader />} */}
         <Menu />
         <Supheader />
+
         <StyledMainPage>
           <div className="footballList">
             <div className="listTitle">
@@ -49,26 +50,25 @@ export const MainPage = () => {
             <div className="recommendations">
               <div className="recommendationTitle">
                 <div
+                  className="tabFootball"
                   onClick={() => {
                     setIndex(0);
                   }}
-                  className="tabCurrent"
                 >
                   <p>Актуально</p>
                 </div>
                 <div
+                  className="tabFootball"
                   onClick={() => {
                     setIndex(1);
                   }}
-                  className="tabFootbal"
                 >
                   <p>Футбол</p>
                 </div>
               </div>
-              {/* <div className="tab"> */}
               {index === 0 ? (
                 <div className="matchs">
-                  {!!data?.response.length &&
+                  {/* {!!data?.response.length &&
                     data?.response.map((match) => (
                       <Match
                         date={match?.fixture?.date}
@@ -76,31 +76,31 @@ export const MainPage = () => {
                         homeName={match?.teams?.home.name}
                         awayLogo={match?.teams?.away.logo}
                         awayName={match?.teams?.away.name}
-                        // long={match?.fixture?.status.long}
+                        long={match?.fixture?.status.long}
                         homeGoal={match?.goals?.home}
                         awayGoal={match?.goals?.away}
                       />
-                    ))}
+                    ))} */}
                 </div>
               ) : (
                 <div className="matchTwo">
                   {" "}
-                  {!!data?.response.length &&
+                  {/* {!!data?.response.length &&
                     data?.response.map((match) => (
+                      <></>
                       <Match
                         date={match?.fixture?.date}
                         homeLogo={match?.teams?.home.logo}
                         homeName={match?.teams?.home.name}
                         awayLogo={match?.teams?.away.logo}
                         awayName={match?.teams?.away.name}
-                        // long={match?.fixture?.status.long}
+                        long={match?.fixture?.status.long}
                         homeGoal={match?.goals?.home}
                         awayGoal={match?.goals?.away}
                       />
-                    ))}
+                    ))} */}
                 </div>
               )}
-              {/* </div>  */}
             </div>
           </div>
         </StyledMainPage>

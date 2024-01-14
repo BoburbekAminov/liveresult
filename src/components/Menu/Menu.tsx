@@ -4,33 +4,35 @@ import { StyledMenu } from "./Menu.style";
 export const Menu = () => {
   return (
     <StyledMenu>
-      <div className="menuName">
-        <p>Футбол</p>
-      </div>
-      <div className="menuName">
-        <p>Хоккей</p>
-      </div>
-      <div className="menuName">
-        <p>Теннис</p>
-      </div>
-      <div className="menuName">
-        <p>Баскетбол</p>
-      </div>
-      <div className="menuName">
-        <p>Формула-1</p>
-      </div>
-      <div className="menuName">
-        <p>ММА</p>
-      </div>
-      <div className="menuName">
-        <p>Волейбол</p>
-      </div>
-      <div className="menuName">
-        <p>Гандбол</p>
-      </div>
-      <div className="menuName">
-        <p>Бейсбол</p>
-      </div>
+      <ul className="menu">
+        <li className="menuName">
+          <p className="name">Футбол</p>
+        </li>
+        <li className="menuName">
+          <p className="name">Хоккей</p>
+        </li>
+        <li className="menuName">
+          <p className="name">Теннис</p>
+        </li>
+        <li className="menuName">
+          <p className="name">Баскетбол</p>
+        </li>
+        <li className="menuName">
+          <p className="name">Формула-1</p>
+        </li>
+        <li className="menuName">
+          <p className="name">ММА</p>
+        </li>
+        <li className="menuName">
+          <p className="name">Волейбол</p>
+        </li>
+        <li className="menuName">
+          <p className="name">Гандбол</p>
+        </li>
+        <li className="menuName">
+          <p className="name">Бейсбол</p>
+        </li>
+      </ul>
     </StyledMenu>
   );
 };

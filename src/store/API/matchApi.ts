@@ -79,4 +79,4 @@ export const matchApi = createApi({
   }),
 });
 
-export const { useGetCountriesQuery, useLazyGetCountriesQuery } = matchApi;
+export const { useLazyGetCountriesQuery } = matchApi;

@@ -1,7 +1,7 @@
 export const colors = {
   bgc: "#f6f6f6",
   elemsBgc: "#fff",
-  primeColor: "#06c",
+  primeColor: "#3c4a63",
   darkPrime: "#314692",
   lightPrime: "#717b9f",
   textColor: "#303030",
@@ -14,4 +14,6 @@ export const colors = {
   red: "#dc2020",
   green: "#36ac82",
   blue: "#399efa",
+  darkColor: "#2c287175",
+  yellow: " #e58e09",
 };

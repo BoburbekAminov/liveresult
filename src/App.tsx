@@ -4,6 +4,8 @@ import { MainPage } from "./pages/MainPage/MainPage";
 import { RegistrationPage } from "./pages/RegistrationPage/RegistrationPage";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
+import { CartPage } from "./pages/CartPage/CartPage";
+import { ThemeProvider } from "./contexts/themeProvider";
 
 const routerConfig = createBrowserRouter([
   {
@@ -23,12 +25,18 @@ const routerConfig = createBrowserRouter([
     path: "/register",
     element: <RegistrationPage />,
   },
+  {
+    path: "/cart",
+    element: <CartPage />,
+  },
 ]);
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <RouterProvider router={routerConfig} />
+      <ThemeProvider>
+        <RouterProvider router={routerConfig} />
+      </ThemeProvider>
     </div>
   );
 };

@@ -11,7 +11,6 @@ import { Container } from "../../components/UI/Container/Container.style";
 import { Heading } from "../../components/Typograohy/Heading";
 import { StyledLink } from "../../components/Typograohy/StyledLink";
 import { RegistrationInfo } from "../../components/RegistrationInfo/RegistrationInfo";
-import { setUser } from "../../store/slice/authSlice";
 
 interface ILoginForm {
   useremail: string;
@@ -32,6 +31,8 @@ export const LoginPage = () => {
   const {
     control,
     handleSubmit,
+    getValues,
+    setValue,
     formState: { errors },
   } = useForm<ILoginForm>({
     resolver: yupResolver(loginFormSchema),
@@ -43,21 +44,36 @@ export const LoginPage = () => {
 
   const navigate = useNavigate();
 
-  const onLoginSubmit: SubmitHandler<ILoginForm> = (data) => {
-    dispatch(
-      setUser({ useremail: data.useremail, userpassword: data.userpassword })
-    );
-    navigate("/profile");
-    console.log(data, "data");
-  };
+  useEffect(() => {
+    const storedData = localStorage.getItem("loginFormData");
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      setValue("useremail", parsedData.useremail);
+      setValue("userpassword", parsedData.userpassword);
+    }
+  }, [setValue]);
 
-  useEffect(() => {}, []);
+  const goToNextPage = () => {
+    if (Object.keys(errors).length === 0) {
+      const formData = getValues(["useremail", "userpassword"]);
+      localStorage.setItem("loginFormData", JSON.stringify(formData));
+
+      console.log("Form Data:", formData);
+
+      navigate("/profile");
+    }
+  };
 
   return (
     <Container>
       <StyleLoginPage>
         <Heading headingText="Авторизация" />
-        <form onSubmit={handleSubmit(onLoginSubmit)}>
+        <form
+          onSubmit={handleSubmit((data) => {
+            console.table(data);
+            goToNextPage();
+          })}
+        >
           <Controller
             name="useremail"
             control={control}

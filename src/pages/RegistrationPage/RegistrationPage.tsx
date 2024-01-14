@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../../components/UI/Button/Button";
 import { StyledRegistrationPage } from "./RegistrationPage.style";
 import { Heading } from "../../components/Typograohy/Heading";
@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RegistrationInfo } from "../../components/RegistrationInfo/RegistrationInfo";
 import { changeUser } from "../../store/slice/userSlice";
+import { setUser } from "../../store/slice/authSlice";
+import { registerAsync } from "../../store/slice/authSlice";
 
 const regexUZB = /^(?:\+998)?(?:\d{2})?(?:\d{7})$/;
 
@@ -25,7 +27,6 @@ const registrationFormSchema = yup.object({
     .min(4, "Пароль должен содержать как минимум 4 символа!")
     .required("Обязательное поле!"),
   useremail: yup.string().email().required("Обязательное поле!"),
-  usercity: yup.string().required("Обязательное поле!"),
 });
 
 interface IRegistrationForm {
@@ -33,14 +34,13 @@ interface IRegistrationForm {
   userphone: string;
   userpassword: string;
   useremail: string;
-  usercity: string;
 }
 
-export const RegistrationPage = () => {
-  const dispatch = useDispatch();
-
+export const RegistrationPage: React.FC = () => {
   const {
     control,
+    setValue,
+    getValues,
     handleSubmit,
     formState: { errors },
   } = useForm<IRegistrationForm>({
@@ -50,32 +50,49 @@ export const RegistrationPage = () => {
       userphone: "",
       userpassword: "",
       useremail: "",
-      usercity: "",
     },
   });
 
   // console.warn("ERRORS: ", errors);
   const navigate = useNavigate();
 
-  const onRegistrationSubmit: SubmitHandler<IRegistrationForm> = (data) => {
-    dispatch(
-      changeUser({
-        username: data.username,
-        userphone: data.userphone,
-        useremail: data.useremail,
-        userpassword: data.userpassword,
-        usercity: data.usercity,
-      })
-    );
-    navigate("/profile");
-    console.log(data, "DATA: ");
+  useEffect(() => {
+    const storedData = localStorage.getItem("registrationFormData");
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      setValue("username", parsedData.username);
+      setValue("userphone", parsedData.userphone);
+      setValue("useremail", parsedData.useremail);
+      setValue("userpassword", parsedData.userpassword);
+    }
+  }, [setValue]);
+
+  const goToNextPage = () => {
+    if (Object.keys(errors).length === 0) {
+      const formData = getValues([
+        "username",
+        "userphone",
+        "useremail",
+        "userpassword",
+      ]);
+      localStorage.setItem("registrationFormData", JSON.stringify(formData));
+
+      console.log("Form Data:", formData);
+
+      navigate("/profile");
+    }
   };
 
   return (
     <Container>
       <StyledRegistrationPage>
         <Heading headingText="Регистрация" />
-        <form onSubmit={handleSubmit(onRegistrationSubmit)}>
+        <form
+          onSubmit={handleSubmit((data) => {
+            console.table(data);
+            goToNextPage();
+          })}
+        >
           <Controller
             name="username"
             control={control}
@@ -111,19 +128,6 @@ export const RegistrationPage = () => {
                 errorMessage={errors.userphone?.message}
                 type="tel"
                 placeholder="Номер телефона"
-                {...field}
-              />
-            )}
-          />
-          <Controller
-            name="usercity"
-            control={control}
-            render={({ field }) => (
-              <Input
-                isError={errors.usercity ? true : false}
-                errorMessage={errors.usercity?.message}
-                type="text"
-                placeholder="city"
                 {...field}
               />
             )}

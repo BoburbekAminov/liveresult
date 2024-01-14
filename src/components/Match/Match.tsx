@@ -9,13 +9,13 @@ interface IMatchProps {
   homeName: string;
   awayLogo: string;
   awayName: string;
-  //   long: string;
-  //   name: string;
+  long: string;
   homeGoal: string | number;
   awayGoal: string | number;
+  // addToCart: (item: string) => void;
 }
 
-export const Match = ({
+export const Match: React.FC<IMatchProps> = ({
   isLiked,
   isMarked,
   date,
@@ -23,21 +23,31 @@ export const Match = ({
   homeName,
   awayLogo,
   awayName,
-  //   long,
+  long,
   homeGoal,
   awayGoal,
-}: IMatchProps) => {
+}: // addToCart,
+IMatchProps) => {
+  // const handleSaveClick = () => {
+  //   const matchInfo = `${homeName} vs ${awayName}, ${homeGoal}:${awayGoal}, ${long}`;
+  //   addToCart(matchInfo);
+  // };
+
   return (
     <StyledMatch $isLiked={isLiked} $isMarked={isMarked}>
       <div className="h2h">
-        <span>{date}</span>
+        {/* <span>{date}</span> */}
+        <button className="save">
+          <span className="star-icon">&#9733;</span>
+        </button>
         <img src={homeLogo} alt="" />
-        <span>{homeName}</span>
-        <p>
+        <p>{homeName}</p>
+        <p className="goals">
           {homeGoal} : {awayGoal}
         </p>
         <img src={awayLogo} alt="" />
-        <span>{awayName}</span>
+        <p>{awayName}</p>
+        <span className="status">{long}</span>
       </div>
     </StyledMatch>
   );

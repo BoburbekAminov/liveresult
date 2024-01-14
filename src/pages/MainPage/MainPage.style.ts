@@ -27,26 +27,8 @@ export const StyledMainPage = styled.div`
       max-width: 177px;
       font-weight: 700;
       text-align: center;
-      .tabCurrent {
-        /* background-color: #bdf; */
-        color: #3c4a63;
-        padding: 0 8px;
-        cursor: pointer;
-        height: 65px;
 
-        p {
-          font-family: Arial, Helvetica, sans-serif;
-
-          @media (min-width: 769px) {
-            margin: 23px 0;
-          }
-        }
-
-        @media (max-width: 769px) {
-          height: 50px;
-        }
-      }
-      .tabFootbal {
+      .tabFootball {
         /* background-color: #bdf; */
         color: #3c4a63;
         padding: 0 8px;
@@ -64,6 +46,16 @@ export const StyledMainPage = styled.div`
 
         @media (max-width: 769px) {
           height: 50px;
+        }
+        &:hover {
+          background-color: ${(props) => props.theme.colors.primeColor};
+          color: white;
+        }
+
+        &:active {
+          transition: 100ms;
+          background-color: ${(props) => props.theme.colors.primeColor};
+          color: white;
         }
       }
     }

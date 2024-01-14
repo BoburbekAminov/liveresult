@@ -1,20 +1,37 @@
 import React from "react";
 import { StyledProfilePage } from "./ProfilePage.style";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/slice/userSlice";
+import {
+  TextField,
+  Select,
+  MenuItem,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Container,
+} from "@mui/material";
+import { Header } from "../../components/Header/Header";
 
-export const ProfilePage = () => {
-  const userData = useSelector((state: RootState) => state.userSlice.user);
+export const ProfilePage: React.FC = () => {
+  const storedDataString = localStorage.getItem(
+    "registrationFormData" || "loginFormData"
+  );
+  const storedData = storedDataString ? JSON.parse(storedDataString) : null;
+
+  const username = storedData ? storedData[0] : "N/A";
+  const useremail = storedData ? storedData[3] : "N/A";
+
   return (
-    <StyledProfilePage>
-      <>
-        {" "}
-        <p>User Email: {userData?.useremail}</p>
-        <p>User Password: {userData?.userpassword}</p>
-        <p>User username: {userData?.username}</p>
-        <p>User userphone: {userData?.userphone}</p>
-        <p>User usercity: {userData?.usercity}</p>
-      </>
-    </StyledProfilePage>
+    <Container>
+      <Header />
+      <StyledProfilePage>
+        <>
+          <p>name: {username}</p>
+          <p>Email: {useremail}</p>
+        </>
+      </StyledProfilePage>
+    </Container>
   );
 };
