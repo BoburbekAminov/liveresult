@@ -6,6 +6,7 @@ import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { CartPage } from "./pages/CartPage/CartPage";
 import { ThemeProvider } from "./contexts/themeProvider";
+import { CountriesPage } from "./pages/CountriesPage/Countries";
 
 const routerConfig = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const routerConfig = createBrowserRouter([
   {
     path: "/cart",
     element: <CartPage />,
+  },
+  {
+    path: "/cointries",
+    element: <CountriesPage />,
   },
 ]);
 

@@ -60,7 +60,7 @@ export const LoginPage = () => {
 
       console.log("Form Data:", formData);
 
-      navigate("/profile");
+      navigate("/main");
     }
   };
 

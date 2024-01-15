@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyledProfilePage } from "./ProfilePage.style";
 import {
   TextField,
@@ -13,24 +13,60 @@ import {
   Container,
 } from "@mui/material";
 import { Header } from "../../components/Header/Header";
+import { Heading } from "../../components/Typograohy/Heading";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../../components/UI/Button/Button";
 
 export const ProfilePage: React.FC = () => {
+  const [isLoggedOut, setIsLoggedOut] = useState(false);
+  const navigate = useNavigate();
+
   const storedDataString = localStorage.getItem(
     "registrationFormData" || "loginFormData"
   );
   const storedData = storedDataString ? JSON.parse(storedDataString) : null;
 
   const username = storedData ? storedData[0] : "N/A";
-  const useremail = storedData ? storedData[3] : "N/A";
+  const useremail = storedData ? storedData[2] : "N/A";
+
+  const handleSubmit = () => {
+    navigate("/main");
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setIsLoggedOut(true);
+
+    setTimeout(() => {
+      navigate("/");
+    }, 1500);
+  };
 
   return (
     <Container>
       <Header />
       <StyledProfilePage>
-        <>
-          <p>name: {username}</p>
-          <p>Email: {useremail}</p>
-        </>
+        <Heading headingText="Профиль" headingType="h1" />
+        <div className="info">
+          <div className="name">
+            <h3>Имя: {username}</h3>
+          </div>
+          <div className="email">
+            <h3>Почта: {useremail}</h3>
+          </div>
+        </div>
+        <div className="Btn">
+          <div className="logout">
+            <Heading headingText={isLoggedOut ? "" : ""} />
+            <button onClick={handleLogout}>Выйти</button>
+          </div>
+          <div className="submit">
+            <button onClick={handleSubmit}>Главная страница</button>
+          </div>
+        </div>
+
+        {/* <p>name: {username}</p>
+          <p>Email: {useremail}</p> */}
       </StyledProfilePage>
     </Container>
   );

@@ -39,6 +39,13 @@ export const StyledMenu = styled.div`
         font-size: 17px;
       }
     }
+    a {
+      color: #3c4a63;
+      &:hover {
+        background-color: ${(props) => props.theme.colors.primeColor};
+        color: white;
+      }
+    }
 
     &:hover {
       background-color: ${(props) => props.theme.colors.primeColor};

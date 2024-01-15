@@ -6,7 +6,9 @@ export const Menu = () => {
     <StyledMenu>
       <ul className="menu">
         <li className="menuName">
-          <p className="name">Футбол</p>
+          <a href="/cointries" className="name">
+            Футбол
+          </a>
         </li>
         <li className="menuName">
           <p className="name">Хоккей</p>

@@ -34,15 +34,18 @@ export const StyledHeader = styled.div`
       padding-right: 5px;
       button {
         height: 25px;
+        background: #bdf;
         &:hover {
           background-color: ${(props) => props.theme.colors.primeColor};
           color: white;
+          border-color: ${(props) => props.theme.colors.primeColor};
         }
 
         &:active {
           transition: 100ms;
           background-color: ${(props) => props.theme.colors.primeColor};
           color: white;
+          border-color: ${(props) => props.theme.colors.primeColor};
         }
       }
     }
