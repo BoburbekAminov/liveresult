@@ -59,6 +59,8 @@ export const StyledMainPage = styled.div`
         }
       }
     }
+    .league {
+    }
     .matchs {
       display: flex;
       flex-wrap: wrap;

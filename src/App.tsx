@@ -27,7 +27,7 @@ const routerConfig = createBrowserRouter([
     element: <RegistrationPage />,
   },
   {
-    path: "/cart",
+    path: "/card/:id",
     element: <CartPage />,
   },
   {

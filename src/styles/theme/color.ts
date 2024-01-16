@@ -16,4 +16,5 @@ export const colors = {
   blue: "#399efa",
   darkColor: "#2c287175",
   yellow: " #e58e09",
+  bdf: "#bdf",
 };

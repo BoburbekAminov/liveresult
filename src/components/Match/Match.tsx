@@ -4,7 +4,6 @@ import { StyledMatch } from "./Match.style";
 interface IMatchProps {
   isLiked?: boolean;
   isMarked?: boolean;
-  date: string;
   homeLogo: string;
   homeName: string;
   awayLogo: string;
@@ -18,7 +17,6 @@ interface IMatchProps {
 export const Match: React.FC<IMatchProps> = ({
   isLiked,
   isMarked,
-  date,
   homeLogo,
   homeName,
   awayLogo,

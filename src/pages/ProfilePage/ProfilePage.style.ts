@@ -41,6 +41,16 @@ export const StyledProfilePage = styled.div`
         font-family: inherit;
         background-color: #3c4a63;
         color: white;
+        &:hover {
+          background: ${(props) => props.theme.colors.bdf};
+          color: ${(props) => props.theme.colors.primeColor};
+        }
+
+        &:active {
+          transition: 100ms;
+          background: ${(props) => props.theme.colors.bdf};
+          color: ${(props) => props.theme.colors.primeColor};
+        }
       }
     }
     .logout {
@@ -57,6 +67,16 @@ export const StyledProfilePage = styled.div`
         font-family: inherit;
         background-color: #3c4a63;
         color: white;
+        &:hover {
+          background: ${(props) => props.theme.colors.bdf};
+          color: ${(props) => props.theme.colors.primeColor};
+        }
+
+        &:active {
+          transition: 100ms;
+          background: ${(props) => props.theme.colors.bdf};
+          color: ${(props) => props.theme.colors.primeColor};
+        }
       }
     }
   }

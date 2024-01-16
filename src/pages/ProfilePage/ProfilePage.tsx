@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { StyledProfilePage } from "./ProfilePage.style";
 import {
   TextField,
@@ -16,9 +16,12 @@ import { Header } from "../../components/Header/Header";
 import { Heading } from "../../components/Typograohy/Heading";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/UI/Button/Button";
+import { ThemeContext, themes } from "../../contexts/themeContext";
 
 export const ProfilePage: React.FC = () => {
   const [isLoggedOut, setIsLoggedOut] = useState(false);
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   const navigate = useNavigate();
 
   const storedDataString = localStorage.getItem(
@@ -43,7 +46,12 @@ export const ProfilePage: React.FC = () => {
   };
 
   return (
-    <Container>
+    <Container
+      style={{
+        background: theme === themes.dark ? "#333" : "#fff",
+        color: theme === "default" ? "#fff" : "#333",
+      }}
+    >
       <Header />
       <StyledProfilePage>
         <Heading headingText="Профиль" headingType="h1" />
