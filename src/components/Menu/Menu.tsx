@@ -6,7 +6,7 @@ export const Menu = () => {
     <StyledMenu>
       <ul className="menu">
         <li className="menuName">
-          <a href="/cointries" className="name">
+          <a href="/countries" className="name">
             Футбол
           </a>
         </li>

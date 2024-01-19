@@ -7,6 +7,7 @@ import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { CartPage } from "./pages/CartPage/CartPage";
 import { ThemeProvider } from "./contexts/themeProvider";
 import { CountriesPage } from "./pages/CountriesPage/Countries";
+import { SaveProvider } from "./components/Match/SaveContext";
 
 const routerConfig = createBrowserRouter([
   {
@@ -27,11 +28,11 @@ const routerConfig = createBrowserRouter([
     element: <RegistrationPage />,
   },
   {
-    path: "/card/:id",
+    path: "/cart",
     element: <CartPage />,
   },
   {
-    path: "/cointries",
+    path: "/countries",
     element: <CountriesPage />,
   },
 ]);
@@ -39,9 +40,11 @@ const routerConfig = createBrowserRouter([
 const App: React.FC = () => {
   return (
     <div className="App">
-      <ThemeProvider>
-        <RouterProvider router={routerConfig} />
-      </ThemeProvider>
+      <SaveProvider>
+        <ThemeProvider>
+          <RouterProvider router={routerConfig} />
+        </ThemeProvider>
+      </SaveProvider>
     </div>
   );
 };

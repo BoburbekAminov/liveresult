@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyledMatch } from "./Match.style";
+import { useNavigate } from "react-router-dom";
 
 interface IMatchProps {
   isLiked?: boolean;
@@ -11,7 +12,6 @@ interface IMatchProps {
   long: string;
   homeGoal: string | number;
   awayGoal: string | number;
-  // addToCart: (item: string) => void;
 }
 
 export const Match: React.FC<IMatchProps> = ({
@@ -24,18 +24,28 @@ export const Match: React.FC<IMatchProps> = ({
   long,
   homeGoal,
   awayGoal,
-}: // addToCart,
-IMatchProps) => {
-  // const handleSaveClick = () => {
-  //   const matchInfo = `${homeName} vs ${awayName}, ${homeGoal}:${awayGoal}, ${long}`;
-  //   addToCart(matchInfo);
-  // };
+}: IMatchProps) => {
+  const navigate = useNavigate();
+
+  const handleSaveClick = () => {
+    const matchInfo = {
+      homeLogo,
+      awayLogo,
+      homeName,
+      awayName,
+      homeGoal,
+      awayGoal,
+      long,
+    };
+
+    navigate("/cart", { state: { matchInfo } });
+  };
 
   return (
     <StyledMatch $isLiked={isLiked} $isMarked={isMarked}>
       <div className="h2h">
         {/* <span>{date}</span> */}
-        <button className="save">
+        <button className="save" onClick={handleSaveClick}>
           <span className="star-icon">&#9733;</span>
         </button>
         <img src={homeLogo} alt="" />

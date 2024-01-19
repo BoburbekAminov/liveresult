@@ -21,7 +21,7 @@ const loginFormSchema = yup.object({
   useremail: yup.string().email().required("Обязательное поле!"),
   userpassword: yup
     .string()
-    .min(4, "Пароль должен содержат ")
+    .min(4, "Пароль должен содержат 4 символов")
     .required("Обязательное поле!"),
 });
 
